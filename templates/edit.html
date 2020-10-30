@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Wiki Blockchain</title>
+{% endblock %}
+
+{% block body %}
+<!-- <!DOCTYPE html> -->
+<div class="content">
+  <!-- <form action = "http://localhost:5000/new" method = "post"> -->
+   <form action = "/edit/{{data.title}}/{{data.hash}}" method = "post">
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" placeholder="Your title..">
+
+    <!-- <label for="hash">Hash</label>
+    <input type="text" id="hash" name="hash" placeholder="Your hash.."> -->
+
+    <!-- <script type="text/javascript" src="tinymce/tinymce.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/tinymce.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.6/jquery.tinymce.min.js"></script>
+      
+    <script type="text/javascript">
+    	tinymce.init({
+    	selector: '#post',
+    	plugins: [
+      	'advlist autolink link image imagetools lists charmap print preview hr anchor pagebreak spellchecker',
+      	'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+      	'save table contextmenu directionality template paste textcolor codesample'
+    	],
+    	imagetools_toolbar: "rotateleft rotateright | flipv fliph | editimage imageoptions",
+    	toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons | codesample',
+    	
+    	automatic_uploads: true,
+    	images_reuse_filename: false,
+    	images_upload_base_path: '/static/uploads',
+    	codesample_languages: [
+      	{text: 'HTML/XML', value: 'markup'},
+      	{text: 'JavaScript', value: 'javascript'},
+      	{text: 'CSS', value: 'css'},
+      	{text: 'Processing', value: 'processing'},
+      	{text: 'Python', value: 'python'}
+    	]
+    	});
+	</script>
+
+    <label for="post">Post</label>
+     <textarea name = post id = post  >{{data.content.decode("utf-8")}}</textarea>
+      <!-- <script type="text/javascript" src="{{ url_for('static', filename='tinymce/tinymce.min.js') }}"></script> -->
+
+      <!-- <script type="text/javascript" src="tinymce/jquery.tinymce.min.js"></script> -->
+      
+    <input type="submit" value="Submit">
+
+  </form>
+
+  <!-- <form action = "http://localhost:5000/query" method = "post">
+
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" placeholder="Your title..">
+
+   
+
+  
+
+    <input type="submit" value="Submit">
+
+  </form> -->
+
+</div>
+
+{% endblock %}
