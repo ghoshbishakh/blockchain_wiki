@@ -8,6 +8,8 @@ from web3.auto import w3
 import time
 # from distance import Reputation
 
+import argparse
+
 
 api = ipfsapi.connect('127.0.0.1', 5001)
 app = Flask(__name__)
@@ -46,36 +48,53 @@ ganache_url = 'HTTP://127.0.0.1:8545'
 # account1 = "0xa4A9a00D3908077c99BbaDdF0283ABfeE308e6E1"
 # private_key1 = "6bf6ed8c82ab6befcf6f060e76fee6f83563adb94b09cc90d618158a67941afd"
 
+# (0) 0xC459B74d6076dEf20ddd1Bf775d53f506dADd161 (100 ETH)
+# (1) 0x3Ba6ab15D59F67261f07ec6CE24492D7B579A2dd (100 ETH)
+# (2) 0xCF0d155F7831463A33C329D449cF474b051D4ae6 (100 ETH)
+# (3) 0x88Ae20aE4a38a4ADc7e9EE1F519016dBD35Cf848 (100 ETH)
+# (4) 0x6Ef06BA9D266240543Bba728BAC5eecc2379CABb (100 ETH)
+# (5) 0x27f47f49AAC47eFbe73bCF716C150D15f3117Ec9 (100 ETH)
+# (6) 0x1E2aB97A5aC66c413e75Fba8A466BB8E9f29C862 (100 ETH)
+# (7) 0x6CB1D3CBf0b1041DDA43a3D4e2d8b48A77E6a967 (100 ETH)
+# (8) 0x55FBE6De4359532821Bd6E6c74206Db3CE06454d (100 ETH)
+# (9) 0x5C17Ad0070faeCf5B8C1Aa9752E1D7dA210C3B39 (100 ETH)
 
-# (0) 0x749c7227a6b49ebE7BcB86c86E7c36e8606Ed108 (100 ETH)
-# (1) 0x180D8A7124d38dd752DA010D53fE2072fF0ee5f8 (100 ETH)
-# (2) 0x8645cc7De3E722f759901e37e0947d7F58445d72 (100 ETH)
-# (3) 0x49DC7A065f890aA4B753eE77f54AF8F788637863 (100 ETH)
-# (4) 0x89a63E8f5781e367cC33a0C15e655d0f29E4f7bE (100 ETH)
-# (5) 0x8b9bc68ba551FF8e1f480f236769B05AB914eB34 (100 ETH)
-# (6) 0x607107C2805173F25e1F5e4A5e6a5a736aB2bc30 (100 ETH)
-# (7) 0xb840920c85D7D175bDF66cf563f27318d4f69317 (100 ETH)
-# (8) 0x86921AEc190C724b047d2220fcDbfbf2f8d3de0e (100 ETH)
-# (9) 0xcE631b243F3B330A9E84D9550140Fad38384d4DC (100 ETH)
+# Private Keys
+# ==================
+# (0) 0xaf1deaabcc421533a80f97cf2896fcc819e1ccf6c607bc63c9cc81a5749cb963
+# (1) 0x674d3acbce99f2734bbbe2cc3c99aac814da31890aa2afe47c7c2dce6b09ac4f
+# (2) 0x4ddba0da787546d133661cf787b23919e0702d3e783c130444471dea6378b292
+# (3) 0xc1df84bf7c521aba149d3296d34f7755f5bd01a543e14648bff4a415d8a644a3
+# (4) 0xeaa04f1c91d1ef8a3e5673b3f0d900baead9d5983eb27ec2c26b4a0f97ead340
+# (5) 0xcd98a469b5897927983606c9d4f040cded630e496f20ae1f549b10b8154bff75
+# (6) 0x4645d748f5974d136df24cdb2366c1d0c9defd42bbfcd763d069f38ad44a6529
+# (7) 0x59fc3089e98645900363e6b0a1bd83ee8ba3a4eb1329a1e869074c5f32d2df79
+# (8) 0xadebbfc49fdefbd962860a1683e757bb2a5171f917117406579ccdbce0ba74ce
+# (9) 0x7f7fd37995f215ed7b677592ee68deaa54b2ed785dd319de4badab651adc43b2
 
-# (0) 0x09480cba6c9b0e82629f63494458b98fdbd64bbc8ee952333486bfc2d0e00d97
-# (1) 0x76f5ef4a6d8a9dcd9d1c4c40e97252294b79301869be36c1e2f079cd381e1a44
-# (2) 0x7ede59589fa144763cdcfad508d6d068f8be6102fa6d1fdbe4e8eca06b4f28ed
-# (3) 0x9d377a8f08e77c05e2b3e7601478e182b3fbfee51efed43313da9567a8e271af
-# (4) 0x47f643cfdecdb1b84507c45458acdd9da7e30686eee13eb322d59dc491de31b2
-# (5) 0xb72262207e094166be3326e4709a88d0a4409ba4a6be51fba252efc2d9b9e02e
-# (6) 0xa1c7c6aeae90d520de28cfc1405beaa5b5041760b8588bca284100231513c55e
-# (7) 0x08f9b088a7b7eb208b80466ced8e8fcd5425d5e4e6747c1b7425a61af03d02ac
-# (8) 0xc92ddf0260c0f5d8a54c390002394f309813e5a0d74c4f2289f0b68b6e090ba8
-# (9) 0x564a1177e58acdbc75bffc9fc8e3d694bdf03953ed8acb5dd160ef3720bc4c0c  
+# HD Wallet
+# ==================
+# Mnemonic:      retreat bird whale quiz hole favorite long pigeon source bone donate regret
+# Base HD Path:  m/44'/60'/0'/0/{account_index}
 
 
-account1 = "0x180D8A7124d38dd752DA010D53fE2072fF0ee5f8"
-private_key1 = "0x76f5ef4a6d8a9dcd9d1c4c40e97252294b79301869be36c1e2f079cd381e1a44"
 
-contract_address = "0x9c9165a555e0c15b2982c1543a10bab698542cda"
+
+account1 = "0x1e5f3899fa12ffab1c8f640262439d26c5266bb4"
+private_key1 = "3f0081f54b9cf7c168548bb523c07fbf89d1ed96d7e72f38abffd461eb5c5614"
+
+# account1 = "0x165d5bc83dffc82f73f7b5ba23ab11e68859a897"
+# private_key1 = "25ed07cbc30887d3ef16e45597e593a2c3348f13194e63dc6922ad62c013a473"
+
+# account1 = "0x165d5bc83dffc82f73f7b5ba23ab11e68859a897"
+# private_key1 = "25ed07cbc30887d3ef16e45597e593a2c3348f13194e63dc6922ad62c013a473"
+
+
+contract_address = "0x26c363c46ed12299ac49ef1d99a4432224c16e3a"
+
 web3 = Web3(Web3.HTTPProvider(ganache_url))
 address = Web3.toChecksumAddress(contract_address)
+account1 = Web3.toChecksumAddress(account1)
 
 # def init():
 
@@ -332,8 +351,8 @@ class wiki_contract:
       #return contract
 
 
-contract = wiki_contract()
-contract = contract.contract
+contract = wiki_contract().contract
+# contract = contract.contract
 
 
 
@@ -358,7 +377,24 @@ def sign_transaction(tx):
 
 def transac(title,hash):
    print( web3.eth.getBalance(account1))
-   tx = contract.functions.new_article(title,hash).buildTransaction({'nonce': web3.eth.getTransactionCount(account1)})
+#    transaction = {
+#         'to': '0xF0109fC8DF283027b6285cc889F5aA624EaC1F55',
+#         'value': 1000000000,
+#         'gas': 2000000,
+#         'gasPrice': 234567897654321,
+#         'nonce': web3.eth.getTransactionCount(account1),
+#         'chainId': 1
+#     }
+#    key = '0x4c0883a69102937d6231471b5dbb6204fe5129617082792ae468d01a3f362318'
+#    signed = w3.eth.account.signTransaction(transaction, key)
+
+# w3.eth.sendRawTransaction(signed.rawTransaction)
+   # tx = contract.functions.new_article(title,hash).buildTransaction({'nonce': web3.eth.getTransactionCount(account1), 'chainId': 10})
+   tx = contract.functions.new_article(title,hash).buildTransaction({'gas': 700000,
+    'gasPrice': web3.toWei('1', 'gwei'),
+    'from': account1,
+    'nonce': web3.eth.getTransactionCount(account1),
+    'chainId' : 1})
    print(tx)
    sign_transaction(tx)
 
@@ -494,6 +530,9 @@ def edit(title,hash):
 
 
 if __name__ == '__main__':
+
+
    
    app.run(debug = True)
+   
    
